@@ -1,0 +1,238 @@
+OverTheWire - Bandit : Level 0
+
+Level 0 - How to Use SSH, Basic UNIX commands
+
+This level teaches how to connect to a server using a given username and password. The format is as follows:
+
+<username>@<server address>
+
+enter “exit” when you wish to disconnect.
+
+To list the files and directories stored on a server, you will need to learn the “ls” command. “ls” prints a list of files and directories at the current location on the display.
+
+To see what is inside a file, you can use the “cat” command followed by the name of the file that you wish to view the contents of. This will print the contents of the file to the display if it is human readable.
+
+Another way to see the contents of a file is to open it with vim. Vim is a text editor and will allow you to view and modify human readable files. Run the command “vim <filename>” to open the file in vim, and enter “:wq” to exit.
+
+Becoming familiar with vim is highly worth the time investment, and you should consider learning more commands in order to improve your efficiency. However, this should be all you need to know in order to complete the Bandit game.
+
+Flag Obtained
+boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+
+Level 1 - Escaping Files starting with Special Characters
+
+This level teaches how to escape special characters by using the dash (-) as an example. Users can escape special characters in file names by appending “./“ to the beginning of a file name if it starts with a special character.
+
+Flag Obtained
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+
+Level 2 - Escaping Spaces in File Names
+
+This level teaches how to escape spaces in file names by prepending each space with “\” in order to escape the space character.
+
+Flag Obtained
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+Level 3 - Changing Directories and Showing Hidden Files
+
+This level teaches the “cd” command in order to change directories. The user will have to navigate into the “inhere” directory, which appears empty when “ls” is run. This is because the flag is stored in a dot file, which is hidden from a normal “ls”. To display hidden files, the user must run ls with the “-a” argument which tells ls to print the hidden files in the directory as well.
+
+Flag Obtained
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+Level 4 - Human Readable Files, Other UNIX Commands
+
+This level teaches that a user can reset their terminal with the “reset” command if a file that is not human readable is opened.
+
+In order to determine if a file is human readable, the command “file” can be used. running “file <filename>” will tell the user what type the named file is.
+
+<<- Editor’s Note: In our situation, we need to remember to escape the dash at the start of the files. We can also use the wildcard character to check more than one file at a time, so the command we need to run is “file ./-*”. ->>
+
+Flag Obtained
+koReBOKuIDDepwhWk7jZC0RTdopnAYKh
+
+Level 5 - The find Command
+
+This level teaches how to search for a file using the file command. Attributes that can be used as search criteria are available to review in the man page, which you can view with the command “man find”.
+
+Flag Obtained
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+
+Level 6 - Piping Commands
+
+This level teaches how to pipe commands in order to funnel the output of one command into the input of another. As we know what the attributes are for the file we are searching for we can create the command to search for the desired file. However, searching will generate a high number of error messages. We can get around this by directing the error output to the standard output, and then grepping the output for any line that doesn’t contain find - which is part of a failed find result.
+
+Flag Obtained
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+<<- Editor’s Note: The full command solution to this level is “find / -user bandit7 -group bandit6 -size 33c 2>&1 | grep -v -F find” ->>
+
+
+Level 7 - Grepping
+
+If you did level 6 the hard way (Editor: not using grep.) then this level forces you to use the grep command. To find the password you have to grep for the specified word to get the full line that contains the password.
+
+Flag Obtained
+cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+Level 8 - Sorting and Counting
+
+This level requires you to sort the lines in a file and then output the unique line using the sort and uniq commands.
+
+Flag Obtained
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+
+<<- Editor’s Note: The first time I did this level I didn’t understand that uniq printed all instances, it only drops duplicates. I thought it would only print instances that were not duplicated. This is why you have to run a count! ->>
+
+Level 9 - The Strings Command
+
+This level requires you to search for a specific string within the specified file, which requires the strings command and piping the output into a grep for the desired character.
+
+<<- Editor’s Note: I’m still not really sure why you have to use string and can’t just use cat. If anyone knows why cat produces a different output I would love to hear from you. ->>
+
+Flag Obtained
+truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+
+Level 10 - Base64 Data Format
+
+This level teaches that data can be encoded or decoded from base64 using the base64 command. 
+
+Flag Obtained
+IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
+Level 11 - The Translate Command
+
+This level teaches the translate command and basic rotational ciphers. You must use the translate command and a rotational cipher to decrypt the text in the specified file.
+
+Flag Obtained
+5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
+Level 12 - Compression Formats
+
+This level teaches the user about compression, and how to compress and decompress files in various formats. This level requires that you learn the following commands to both compress and decompress:
+
+xxd
+bzip2
+gzip
+tar
+
+Flag Obtained
+8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+<<- Editor’s Note: I had some trouble with tar. Make sure you are using all the required flags! You need at least two, but three makes it easier to tell what is happening. ->>
+
+<<- Hacker’s Note: Good hackers remove the evidence. Delete the directory you created when you are finished. ->>
+
+Level 13 - Using SSH Private Keys
+
+This level teaches you how to connect to a server using a private SSH key. By providing the private key the server will verify your identity and allow you to log in.
+
+Flag Obtained
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+
+Level 14 - Using Telnet
+
+This level teaches how to connect to a server using telnet. 
+
+Flag Obtained
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+
+Level 15 - Using SSL Encryption
+
+This level teaches you to use the openssl and s_client commands to send encrypted data.
+
+Flag Obtained
+cluFn7wTiGryunymYOu4RcffSxQluehd
+
+<<- Editor’s Note: Really, they didn’t have to start the previous key with a B which makes this level unnecessarily confusing. Add the -ign_eof file if you get an error and it will resolve your key correctly. ->>
+
+Level 16 - Using nmap
+
+This level teaches you how to use nmap to see what services are running on a given server’s ports. You can use the “-sV” flag to check which service is running.
+
+Flag Obtained
+-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+
+<<- Editor’s Note: Note that the Flag obtained for this level is not a typical key, but an RSA key. This is used for SSH access to the next level, by saving the key and SSHing from the current level. ->>
+
+<<- Hacker’s Note: You won’t be able to use the SSH key if the permissions are wrong. Make sure that the file can only be read and written by the owner and the group, or your private key is useless! ->>
+
+Level 17 - The diff command
+
+This level teaches you to use the diff command to compare files.
+
+Flag Obtained
+kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+
+Level 18 - Append Commands to SSH
+
+This level teaches that you can append commands to the end of connecting with SSH. This allows you to complete a command to find the flag for the next level before you are disconnected.
+
+Flag Obtained
+IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+Level 19 - How to Run Binaries
+
+This level teaches you how to run binaries. Simply prepend “./“ to the name of the binary in order to run the binary.
+
+Flag Obtained
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+Level 20 - Using Netcat
+
+Netcat, or the nc command, allows you to work with TCP and UDP connections in order to use information being transmitted over a connection.
+
+<<- Editor’s Note: Honestly, I’m not really sure about how this command can be used in a functional setting. But I passed the level, so that’s good enough for now. ->>
+
+Flag Obtained
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+Level 21 - Cron Jobs
+
+This level teaches you basic cron jobs, which basically means that cron jobs can exist. If you look at what the cron job is doing, it is creating a file and saving the flag to that file.
+
+Flag Obtained
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+
+Level 22 - How Scripts Work
+
+This level teaches you that security is easy to break if not created properly. By realizing that the command to create a flag for the previous level is within the cron job for this level, we can modify the command to generate the flag for this level.
+
+Flag Obtained
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+
+Level 23 - Permission Vulnerabilities
+
+This level teaches you that permissions are important. By saving a script to the bandit24 scripts, we can execute a scripts that will provide the password in the bandit23 directory.
+
+<<- Editor’s Note: I need to revisit this level. I think that I was having issues because I wasn’t setting the permissions on the folder where I was creating the output file containing the flag. ->>
+
+Flag Obtained
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
